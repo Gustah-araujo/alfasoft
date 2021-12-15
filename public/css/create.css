@@ -1,0 +1,52 @@
+h1{
+    font-weight: 700;
+}
+
+h2{
+    font-weight: 400;
+}
+
+h3{
+    width: 100%;
+    color: red;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding: 25px 30px;
+}
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 400px;
+}
+
+form > input{
+    width: 100%;
+    margin: 5px 0px;
+}
+
+form > button{
+}
+
+form > button{
+    background-color: #04a304;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 10px;
+    transition: 300ms;
+}
+
+form > button:hover{
+    background-color: #067706;
+}

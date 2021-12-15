@@ -41,8 +41,8 @@ class ContactController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|min:5',
-            'contact' => 'required|min:9|max:9',
-            'email' => 'email'
+            'contact' => 'required|min:9|max:9|unique:contacts,contact',
+            'email' => 'email|unique:contacts,email'
         ]);
 
         //Caso os dados sejam validados, inicio uma nova instância de um contato no Banco de Dados
@@ -83,7 +83,9 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+
+        return view('edit-contact', ['contact' => $contact]);
     }
 
     /**
@@ -95,7 +97,28 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Validação dos dados
+
+        $validated = $request->validate([
+            'new_name' => 'required|min:5',
+            'new_contact' => 'required|min:9|max:9|unique:contacts,contact,' . $id,
+            'new_email' => 'email|unique:contacts,email,' .$id
+        ]);
+
+        //Caso os dados sejam validados, seleciono a instância do Contato a ser atualizado
+
+        $contact = Contact::findOrFail($id);
+
+        //Com o contato certo selecionado, altero seus dados
+
+        $contact->name = $request->new_name;
+        $contact->contact = $request->new_contact;
+        $contact->email = $request->new_email;
+
+        //Com os dados alterados, salvo o contato e redireciono o usuário para a lista de contatos
+
+        $contact->save();
+        return redirect('/');
     }
 
     /**

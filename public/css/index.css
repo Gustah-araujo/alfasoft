@@ -34,7 +34,12 @@ thead > tr > td, tbody > tr > td{
     width: 100%;
 }
 
+form{
+    width: 100%;
+}
+
 .edit-btn{
+    width: 100%;
     border: none;
     color: #000;
     background-color: rgb(231, 231, 13);
@@ -47,6 +52,7 @@ thead > tr > td, tbody > tr > td{
 }
 
 .del-btn{
+    width: 100%;
     border: none;
     color: #fff;
     background-color: rgb(255, 0, 0);

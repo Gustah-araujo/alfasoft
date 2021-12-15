@@ -27,7 +27,11 @@
                         <td>{{ $c->name }}</td>
                         <td>{{ $c->contact }}</td>
                         <td>{{ $c->email }}</td>
-                        <td class="btn-td"><button class="edit-btn">Editar</button></td>
+                        <td class="btn-td">
+                        <form action="{{ route('contact.edit',$c->id) }}">
+                            @csrf
+                            <button type="submit" class="edit-btn">Editar</button>
+                        </form></td>
                         <td class="btn-td"><button class="del-btn">X</button></td>
                     </tr>
                 @endforeach

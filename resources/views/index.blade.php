@@ -7,12 +7,12 @@
     <div class="main-container">
         <h1>Lista de contatos</h1>
         <h2>Aqui poderá ver a lista de todos os usuários cadastrados no banco de dados</h2>
+        <h3>Clique no nome do contato para ver mais detalhes sobre o mesmo</h3>
 
         <table>
             <thead>
                 <tr>
-                    <td>ID</td>
-                    <td>Name</td>
+                    <td>Nome</td>
                     <td>Telefone</td>
                     <td>Email</td>
                     <td></td>
@@ -23,8 +23,7 @@
             <tbody>
                 @foreach ($contacts as $c)
                     <tr>
-                        <td>{{ $c->id }}</td>
-                        <td>{{ $c->name }}</td>
+                        <td><a href="{{ route('contact.show', $c->id) }}">{{ $c->name }}</a></td>
                         <td>{{ $c->contact }}</td>
                         <td>{{ $c->email }}</td>
                         <td class="btn-td">

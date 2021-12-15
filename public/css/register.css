@@ -1,0 +1,34 @@
+form{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+form > input{
+    width: 80%;
+    margin: 5px 0px;
+    padding: 3px;
+}
+
+form > h3{
+    width: 80%;
+    font-size: 15px;
+    color: #ff0000;
+}
+
+form > button{
+    padding: 5px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #029e02;
+    color: #fff;
+    width: 25%;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+form > button:hover{
+    background-color: #016d01;
+}

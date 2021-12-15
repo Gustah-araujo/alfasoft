@@ -28,11 +28,42 @@
                         <td>{{ $c->contact }}</td>
                         <td>{{ $c->email }}</td>
                         <td class="btn-td">
-                        <form action="{{ route('contact.edit',$c->id) }}">
-                            @csrf
-                            <button type="submit" class="edit-btn">Editar</button>
-                        </form></td>
-                        <td class="btn-td"><button class="del-btn">X</button></td>
+                            <form action="{{ route('contact.edit', $c->id) }}">
+                                @csrf
+                                <button type="submit" class="edit-btn">Editar</button>
+                            </form>
+                        </td>
+                        <td class="btn-td">
+
+                            <button type="button" class="del-btn" data-bs-toggle="modal"
+                                data-bs-target="{{ '#deleteModal-' . $c->id }}">
+                                X
+                            </button>
+
+                            <div class="modal fade" id="{{ 'deleteModal-' . $c->id }}" tabindex="-1" aria-labelledby="{{ 'deleteModal-' . $c->id . 'label' }}"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="{{ 'deleteModal-' . $c->id . 'label' }}">Deseja mesmo excluir o contato?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Por favor confirme se deseja excluir o contato: {{ $c->name }}
+                                        </div>
+                                        <form action="{{ route('contact.destroy', $c->id) }}" method="POST" class="modal-footer">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cancelar</a>
+                                            <button type="submit" class="btn btn-danger">Excluir</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

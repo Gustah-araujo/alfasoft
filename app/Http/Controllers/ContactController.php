@@ -129,6 +129,13 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //Seleciono a instância do contato a ser excluído
+
+        $contact = Contact::findOrFail($id);
+
+        //Com o contato selecionado, removo seus dados do Banco de Dados e redireciono o usuário para a lista de contatos
+
+        $contact->delete();
+        return redirect('/');
     }
 }
